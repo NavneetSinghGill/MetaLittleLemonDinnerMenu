@@ -1,9 +1,3 @@
-//
-//  MenuItemView.swift
-//  LittleLemonDinnerMenu
-//
-//  Created by Navneet Singh Gill on 2025-01-28.
-//
 
 import SwiftUI
 
@@ -22,7 +16,7 @@ struct MenuItemView: View {
             Rectangle()
                 .background(menuItem.color)
                 .aspectRatio(1, contentMode: .fit)
-            
+
             Text(menuItem.name)
         }
     }

@@ -1,9 +1,3 @@
-//
-//  MenuItemsView.swift
-//  LittleLemonDinnerMenu
-//
-//  Created by Navneet Singh Gill on 2025-01-28.
-//
 
 import SwiftUI
 
@@ -15,7 +9,7 @@ enum MenuSection {
 struct MenuItemsView: View {
     
     var menuItems: [MenuItem] {
-        (1...12).map {
+        (1...5).map {
             MenuItem(name: "Food \($0)")
         }
     }
@@ -25,14 +19,9 @@ struct MenuItemsView: View {
     }
     
     func getList(from menuItems: [MenuItem]) -> some View {
-        List(0..<Int(menuItems.count/3)) { index in
-            HStack(spacing: 20) {
-                MenuItemView(menuItem: menuItems[index*1])
-                MenuItemView(menuItem: menuItems[index*1+1])
-                MenuItemView(menuItem: menuItems[index*1+2])
-            }
-        }
-        .listRowSeparator(.hidden)
+        GridView(items: menuItems.map{
+            MenuItemView(menuItem: $0)
+        })
     }
     
 }
