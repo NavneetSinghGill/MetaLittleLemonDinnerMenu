@@ -12,9 +12,10 @@ struct GridView<Item: View>: View {
     func createGrid() -> some View {
         List(0...Int((items.count-1)/amountOfCellsToShowInOneRow), id: \.self) { rowIndex in
             singleRowView(rowIndex)
+                .listRowSeparator(.hidden)
         }
     }
-
+    
     func singleRowView(_ rowIndex: Int) -> some View {
         let remainingCells = items.count - rowIndex*amountOfCellsToShowInOneRow
         let cellCount: Int = min(amountOfCellsToShowInOneRow, remainingCells)
@@ -31,5 +32,6 @@ struct GridView<Item: View>: View {
                 }
             }
         }
+
     }
 }

@@ -15,7 +15,7 @@ struct MenuItemView: View {
         VStack(spacing: 10) {
             Rectangle()
                 .background(menuItem.color)
-                .aspectRatio(1, contentMode: .fit)
+                .aspectRatio(1.5, contentMode: .fit)
 
             Text(menuItem.name)
         }
