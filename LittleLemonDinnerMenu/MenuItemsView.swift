@@ -30,13 +30,12 @@ struct MenuItemsView: View {
 
     var body: some View {
         NavigationView {
-
             ScrollView {
                 VStack(alignment: .leading) {
                     Text("Food").font(.title3).padding(.horizontal)
                     showList(from: foodItems)
                     
-                    Text("Drink").font(.title3).padding(.horizontal)
+                    Text("Drinks").font(.title3).padding(.horizontal)
                     showList(from: drinkItems)
                     
                     Text("Dessert").font(.title3).padding(.horizontal)
@@ -54,9 +53,8 @@ struct MenuItemsView: View {
                 }
             }
             .sheet(isPresented: $showModal) {
-                MenuItemsOptionView()
+                MenuItemsOptionView(dismissScreen: $showModal)
             }
-            
         }
     }
     

@@ -14,6 +14,7 @@ struct GridView<Item: View>: View {
             singleRowView(rowIndex)
                 .listRowSeparator(.hidden)
         }
+        .listStyle(.plain)
     }
     
     func singleRowView(_ rowIndex: Int) -> some View {
