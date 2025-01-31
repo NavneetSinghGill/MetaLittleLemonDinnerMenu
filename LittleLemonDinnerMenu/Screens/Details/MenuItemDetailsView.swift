@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MenuItemDetailsView: View {
 
-    var title: String
+    var menuItem: MenuItem
     let imageName = "Lemon"
 
     var body: some View {
@@ -13,11 +13,11 @@ struct MenuItemDetailsView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.size.width/2)
 
-                MenuItemDetail(title: "Price:", options: ["10.99"])
-                MenuItemDetail(title: "Ordered:", options: ["1,000"])
-                MenuItemDetail(title: "Ingredients:", options: ["spinach", "broccoli", "carrots", "pasta"])
+                MenuItemDetail(title: "Price:", options: [menuItem.title])
+                MenuItemDetail(title: "Ordered:", options: ["\(menuItem.orders)"])
+                MenuItemDetail(title: "Ingredients:", options: menuItem.ingredients.map{$0.rawValue})
             }
-            .navigationTitle(title)
+            .navigationTitle(menuItem.title)
         }
     }
     
