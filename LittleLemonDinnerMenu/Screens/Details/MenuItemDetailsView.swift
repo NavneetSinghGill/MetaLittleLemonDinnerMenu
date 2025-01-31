@@ -13,7 +13,7 @@ struct MenuItemDetailsView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.size.width/2)
 
-                MenuItemDetail(title: "Price:", options: [menuItem.title])
+                MenuItemDetail(title: "Price:", options: ["\(menuItem.price)"])
                 MenuItemDetail(title: "Ordered:", options: ["\(menuItem.orders)"])
                 MenuItemDetail(title: "Ingredients:", options: menuItem.ingredients.map{$0.rawValue})
             }
