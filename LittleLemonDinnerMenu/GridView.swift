@@ -4,6 +4,7 @@ import SwiftUI
 struct GridView<Item: View>: View {
     var items: [Item]
     var amountOfCellsToShowInOneRow = 3
+    @State var itemSelection =  false
 
     var body: some View {
         createGrid()

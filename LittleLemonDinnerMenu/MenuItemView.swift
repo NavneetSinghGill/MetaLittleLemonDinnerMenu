@@ -12,12 +12,15 @@ struct MenuItemView: View {
     var menuItem: MenuItem
 
     var body: some View {
-        VStack(spacing: 10) {
-            Rectangle()
-                .background(menuItem.color)
-                .aspectRatio(1.5, contentMode: .fit)
-
-            Text(menuItem.name)
+        ZStack {
+            VStack(spacing: 10) {
+                Rectangle()
+                    .background(menuItem.color)
+                    .aspectRatio(1.5, contentMode: .fit)
+                
+                Text(menuItem.name)
+            }
+            NavigationLink(destination: MenuItemDetailsView(title: menuItem.name)) {}
         }
     }
 }
