@@ -3,6 +3,7 @@ import SwiftUI
 
 struct MenuItemView: View {
     var menuItem: MenuItem
+    var tapClosure: ((MenuItem) -> Void)?
 
     var body: some View {
         ZStack {
@@ -13,7 +14,10 @@ struct MenuItemView: View {
                 
                 Text(menuItem.title)
             }
-            NavigationLink(destination: MenuItemDetailsView(menuItem: menuItem)) {}
+            .onTapGesture {
+                tapClosure?(menuItem)
+            }
+//            NavigationLink(destination: MenuItemDetailsView(menuItem: menuItem)) {}
         }
     }
 }

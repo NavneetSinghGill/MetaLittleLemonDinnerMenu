@@ -3,10 +3,12 @@ import SwiftUI
 
 struct MenuItemsView: View {
     
-    @State var showModal =  false
+    @State var isMenuItemsOptionViewPresented =  false
+    @State var isMenuItemDetailsViewPresented =  false
+    @State var menuItemToShowOnDetailScreen: MenuItem?
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
                     Text("Food").font(.title3).padding(.horizontal)
@@ -23,21 +25,29 @@ struct MenuItemsView: View {
             .navigationTitle("Menu")
             .toolbar {
                 Button {
-                    showModal.toggle()
+                    isMenuItemsOptionViewPresented.toggle()
                 } label: {
                     Image(systemName: "slider.horizontal.3")
                         .foregroundStyle(.blue)
                 }
             }
-            .sheet(isPresented: $showModal) {
-                MenuItemsOptionView(dismissScreen: $showModal)
+            .sheet(isPresented: $isMenuItemsOptionViewPresented) {
+                MenuItemsOptionView(dismissScreen: $isMenuItemsOptionViewPresented)
+            }
+            .navigationDestination(isPresented: $isMenuItemDetailsViewPresented) {
+                if let menuItemToShowOnDetailScreen {
+                    MenuItemDetailsView(menuItem: menuItemToShowOnDetailScreen)
+                }
             }
         }
     }
     
     func showList(from menuItems: [MenuItem]) -> some View {
         GridView(items: menuItems.map{
-            MenuItemView(menuItem: $0)
+            MenuItemView(menuItem: $0) { menuItem in
+                menuItemToShowOnDetailScreen = menuItem
+                isMenuItemDetailsViewPresented = true
+            }
         })
     }
     
